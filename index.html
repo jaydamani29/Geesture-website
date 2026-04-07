@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Maison Elan — Gesture Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="tutorial-overlay" id="gestureTutorial" role="dialog" aria-labelledby="tutorialTitle" aria-modal="true" aria-hidden="false">
+    <div class="tutorial-card">
+      <p class="tutorial-eyebrow">Gesture navigation</p>
+      <h2 id="tutorialTitle" class="tutorial-title">Explore without touching the screen</h2>
+      <p class="tutorial-lead">Enable your camera, then use the gestures below. Your video stays on your device.</p>
+      <ul class="tutorial-list">
+        <li><span class="tutorial-gesture">Swipe</span> Move between full sections</li>
+        <li><span class="tutorial-gesture">Pinch</span> Activate buttons and links under the cursor</li>
+        <li><span class="tutorial-gesture">Two fingers</span> Scroll the page gently</li>
+        <li><span class="tutorial-gesture">Open palm</span> Toggle the menu</li>
+        <li><span class="tutorial-gesture">Closed fist</span> Pause or resume gestures</li>
+      </ul>
+      <div class="tutorial-actions">
+        <button type="button" class="btn btn-primary" id="tutorialDismiss" data-gesture-selectable="true">Begin</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand">Maison Elan</a>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="#home" data-gesture-selectable="true">Home</a></li>
+          <li><a href="#explore" data-gesture-selectable="true">Explore</a></li>
+          <li><a href="#collection" data-gesture-selectable="true">Collection</a></li>
+          <li><a href="#technology" data-gesture-selectable="true">Technology</a></li>
+          <li><a href="#story" data-gesture-selectable="true">Story</a></li>
+          <li><a href="#about" data-gesture-selectable="true">About</a></li>
+          <li><a href="#contact" data-gesture-selectable="true">Contact</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" data-gesture-selectable="true">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="section-page hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <p class="hero-eyebrow">Maison Elan</p>
+          <h1 class="kicker">An Ode to Timeless Craft</h1>
+          <p class="lead">A gesture-led journey through our world of quiet luxury — materials, method, and meaning woven into every piece.</p>
+          <div class="hero-ctas">
+            <a href="#explore" class="btn btn-primary" data-gesture-selectable="true">Start exploring</a>
+            <a href="#collection" class="btn btn-ghost" data-gesture-selectable="true">View collection</a>
+          </div>
+          <button type="button" class="link-quiet" id="openTutorialAgain" data-gesture-selectable="true">Show gesture guide</button>
+        </div>
+        <div class="hero-art reveal" aria-hidden="true">
+          <img src="assets/ornament.svg" alt="" class="ornament" width="380" height="380">
+        </div>
+      </div>
+    </section>
+
+    <section id="explore" class="section-page explore">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title">Explore</h2>
+          <p class="section-sub">Choose a thread to follow — each card opens a different facet of the house.</p>
+        </header>
+        <div class="explore-grid">
+          <article class="explore-card reveal" data-gesture-selectable="true" tabindex="0" role="link" data-scroll-target="#story">
+            <div class="explore-card-media explore-card-media--1"></div>
+            <div class="explore-card-body">
+              <h3>Heritage</h3>
+              <p>Ateliers, lineage, and the slow art of making things that last.</p>
+              <span class="explore-card-cta">Go to Story</span>
+            </div>
+          </article>
+          <article class="explore-card reveal" data-gesture-selectable="true" tabindex="0" role="link" data-scroll-target="#technology">
+            <div class="explore-card-media explore-card-media--2"></div>
+            <div class="explore-card-body">
+              <h3>Innovation</h3>
+              <p>How motion and machine vision meet calm, editorial design.</p>
+              <span class="explore-card-cta">Go to Technology</span>
+            </div>
+          </article>
+          <article class="explore-card reveal" data-gesture-selectable="true" tabindex="0" role="link" data-scroll-target="#collection">
+            <div class="explore-card-media explore-card-media--3"></div>
+            <div class="explore-card-body">
+              <h3>Objects</h3>
+              <p>Silhouettes, textures, and the pieces we return to every season.</p>
+              <span class="explore-card-cta">Go to Collection</span>
+            </div>
+          </article>
+          <article class="explore-card reveal" data-gesture-selectable="true" tabindex="0" role="link" data-scroll-target="#contact">
+            <div class="explore-card-media explore-card-media--4"></div>
+            <div class="explore-card-body">
+              <h3>Concierge</h3>
+              <p>Private fittings, press, and bespoke enquiries — one conversation away.</p>
+              <span class="explore-card-cta">Go to Contact</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection" class="section-page collection">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title">The Collection</h2>
+          <p class="section-sub">Limited runs in noble fibres — each piece named for a mood, not a trend.</p>
+        </header>
+        <div class="collection-showcase reveal">
+          <div class="collection-feature">
+            <div class="collection-feature-visual"></div>
+            <div class="collection-feature-copy">
+              <p class="eyebrow">Signature</p>
+              <h3>Heritage Blazer</h3>
+              <p class="muted">Deep forest wool, horn buttons, and a whisper of gold thread along the inner lapel — tailored for years, not seasons.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-media card-media--a"></div>
+            <div class="card-body">
+              <h3>Maison Trench</h3>
+              <p class="muted">Water-resistant cotton gabardine with a sculpted shoulder and storm collar.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-media card-media--b"></div>
+            <div class="card-body">
+              <h3>Evening Shirt</h3>
+              <p class="muted">Silk blend with a hand-finished collar and mother-of-pearl studs.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-media card-media--c"></div>
+            <div class="card-body">
+              <h3>Nocturne Scarf</h3>
+              <p class="muted">Jacquard silk in charcoal and champagne — light enough to wear indoors.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-media card-media--d"></div>
+            <div class="card-body">
+              <h3>Atelier Loafers</h3>
+              <p class="muted">Calf leather, leather sole, and a patina that deepens with wear.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-media card-media--e"></div>
+            <div class="card-body">
+              <h3>Lumen Cuff</h3>
+              <p class="muted">Brushed gold vermeil — a single line, no logo, only reflection.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-media card-media--f"></div>
+            <div class="card-body">
+              <h3>Archive Coat</h3>
+              <p class="muted">Double-faced cashmere in oat — unlined, weightless, decisive.</p>
+            </div>
+          </article>
+        </div>
+        <div class="image-strip reveal" aria-hidden="true">
+          <div class="image-strip-cell"></div>
+          <div class="image-strip-cell"></div>
+          <div class="image-strip-cell"></div>
+          <div class="image-strip-cell"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="technology" class="section-page technology">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title">Technology</h2>
+          <p class="section-sub">Your hand becomes the interface — computed locally, framed like jewellery.</p>
+        </header>
+        <div class="tech-layout">
+          <div class="tech-diagram reveal" aria-hidden="true">
+            <div class="tech-diagram-ring"></div>
+            <div class="tech-diagram-core"></div>
+            <div class="tech-diagram-node tech-diagram-node--a"></div>
+            <div class="tech-diagram-node tech-diagram-node--b"></div>
+            <div class="tech-diagram-node tech-diagram-node--c"></div>
+            <span class="tech-diagram-label">Hand landmarks</span>
+          </div>
+          <div class="tech-copy">
+            <div class="tech-block reveal">
+              <h3>MediaPipe Hands</h3>
+              <p class="muted">A lightweight model tracks your hand in the browser. Landmarks map to cursor position, then stable poses trigger navigation — swipes from wrist motion, pinch from thumb and index proximity.</p>
+            </div>
+            <div class="tech-block reveal">
+              <h3>Privacy first</h3>
+              <p class="muted">Frames never leave your machine unless you choose to share them. The camera feeds the model only; nothing is uploaded for this experience.</p>
+            </div>
+            <div class="tech-block reveal">
+              <h3>Designed calm</h3>
+              <p class="muted">Cooldowns and smoothing keep motion from feeling jittery. The HUD mirrors what the system believes you are doing, so the interface stays legible.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tech-features">
+          <div class="tech-feature reveal">
+            <span class="tech-feature-icon">01</span>
+            <h4>Smooth cursor</h4>
+            <p class="muted">Interpolated movement follows your index tip across the viewport.</p>
+          </div>
+          <div class="tech-feature reveal">
+            <span class="tech-feature-icon">02</span>
+            <h4>Section flow</h4>
+            <p class="muted">Horizontal wrist travel maps to section changes along the narrative spine.</p>
+          </div>
+          <div class="tech-feature reveal">
+            <span class="tech-feature-icon">03</span>
+            <h4>Pinch select</h4>
+            <p class="muted">A short pinch fires a click on the element beneath the glow.</p>
+          </div>
+          <div class="tech-feature reveal">
+            <span class="tech-feature-icon">04</span>
+            <h4>Two-finger scroll</h4>
+            <p class="muted">Index and middle extended — vertical motion scrolls long passages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="section-page story">
+      <div class="container story-stack">
+        <header class="section-head reveal">
+          <h2 class="section-title">Story</h2>
+          <p class="section-sub">Three chapters — scroll or gesture through the arc of the house.</p>
+        </header>
+        <article class="story-chapter reveal">
+          <p class="story-index">I</p>
+          <h3>The atelier</h3>
+          <p>We began in a small workshop where pattern pieces outnumbered chairs. Every garment was cut twice — once in paper, once in cloth — so the drape could be argued in daylight before a single stitch.</p>
+        </article>
+        <article class="story-chapter reveal">
+          <p class="story-index">II</p>
+          <h3>The silence of material</h3>
+          <p>Wool from the highlands, silk from river valleys, leather from tanneries that still work by hand. We choose fibres that age with dignity: creases that look earned, not careless.</p>
+        </article>
+        <article class="story-chapter reveal">
+          <p class="story-index">III</p>
+          <h3>The room you enter</h3>
+          <p>Maison Elan is not only what you wear but how you move through a space. This site is an experiment in that same restraint — gesture as invitation, not command.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section-page about">
+      <div class="container about-layout">
+        <div class="about-primary reveal">
+          <h2 class="section-title">About this experience</h2>
+          <p class="muted">Gesture interaction asks for a different kind of attention. Without a mouse, you negotiate distance and timing — the interface becomes theatrical, almost intimate.</p>
+          <p>We built this layer on top of a classic editorial layout so luxury codes stay intact: serif headlines, generous margins, and gold used as punctuation, not noise.</p>
+        </div>
+        <aside class="about-aside reveal">
+          <div class="quote">“Technology is at its best when it disappears into ritual.”</div>
+          <p class="muted small">If gestures feel unfamiliar at first, allow a few passes. The engine learns your scale of motion within the session.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact" class="section-page contact">
+      <div class="container contact-layout">
+        <div class="contact-intro reveal">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-sub">Concierge hours — Tuesday to Saturday, 10:00–18:00 CET. We reply within two business days.</p>
+          <div class="contact-details">
+            <p><span class="contact-label">Studio</span> Paris · Milan</p>
+            <p><span class="contact-label">Press</span> press@maisonelan.example</p>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <label class="field">
+              <span class="field-label">Name</span>
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" data-gesture-selectable="true" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input type="email" name="email" placeholder="Email" autocomplete="email" data-gesture-selectable="true" required>
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">Message</span>
+            <textarea name="message" placeholder="How may we assist you?" rows="5" data-gesture-selectable="true"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" data-gesture-selectable="true">Send message</button>
+            <button type="button" class="btn btn-ghost" id="subscribeBtn" data-gesture-selectable="true">Subscribe to notes</button>
+          </div>
+          <p class="form-note muted" id="formNote" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© Maison Elan</div>
+      <div class="social muted">Instagram · Contact</div>
+    </div>
+  </footer>
+
+  <video class="gesture-video" autoplay playsinline muted></video>
+  <div class="gesture-cursor" id="virtualCursor" aria-hidden="true"></div>
+  <div class="cursor-gesture-label" id="cursorGestureLabel" aria-hidden="true"></div>
+  <div class="gesture-feedback" id="gestureFeedbackText" role="status" aria-live="polite"></div>
+
+  <aside class="gesture-hud" aria-label="Gesture system status">
+    <div class="gesture-hud-header">
+      <span class="gesture-hud-title">Gesture HUD</span>
+      <span class="gesture-hud-dot" id="hudCameraDot" data-state="off"></span>
+    </div>
+    <dl class="gesture-hud-rows">
+      <div class="gesture-hud-row">
+        <dt>Camera</dt>
+        <dd id="hudCameraStatus">Off</dd>
+      </div>
+      <div class="gesture-hud-row">
+        <dt>Gesture</dt>
+        <dd id="hudGestureName">—</dd>
+      </div>
+      <div class="gesture-hud-row">
+        <dt>State</dt>
+        <dd id="hudSystemState">Idle</dd>
+      </div>
+    </dl>
+  </aside>
+
+  <button type="button" id="startGestureBtn" class="gesture-start-fab" data-gesture-selectable="true">Enable gestures</button>
+
+  <script src="js/gestureEngine.js" defer></script>
+  <script src="js/navigationController.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
