@@ -1,4 +1,4 @@
-# Maison Elan — Frontend scaffold
+# JD — Frontend scaffold
 
 This repository contains a minimal vanilla HTML/CSS/JS landing page scaffold with an "Old Money" luxury theme. It is intended for a college assignment that only allows HTML, CSS and plain JavaScript.
 
