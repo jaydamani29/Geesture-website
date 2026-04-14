@@ -1,4 +1,4 @@
-fimport os
+import os
 import re
 
 def strip_js_css_comments(content):
